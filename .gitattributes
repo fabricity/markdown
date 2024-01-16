@@ -1,0 +1,9 @@
+* text=auto
+
+/.editorconfig      export-ignore
+/.gitattributes     export-ignore
+/.github            export-ignore
+/.gitignore         export-ignore
+/*.dist             export-ignore
+/*.dist.php         export-ignore
+/README.md          export-ignore

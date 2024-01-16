@@ -19,7 +19,7 @@ jobs:
                     key: ${{ runner.os }}-${{ hashFiles('**/composer.json') }}
             -   uses: php-actions/composer@v6
                 with:
-                    php-version: ${{ env.PHP_VERSION }}
+                    php_version: ${{ env.PHP_VERSION }}
             -   name: "Run phpstan"
                 uses: php-actions/phpstan@v3
                 with:
@@ -37,6 +37,6 @@ jobs:
                     key: ${{ runner.os }}-${{ hashFiles('**/composer.json') }}
             -   uses: php-actions/composer@v6
                 with:
-                    php-version: ${{ env.PHP_VERSION }}
+                    php_version: ${{ env.PHP_VERSION }}
             -   name: "Run php-cs-fixer"
                 run: vendor/bin/php-cs-fixer fix --diff --dry-run --config=.php-cs-fixer.dist.php

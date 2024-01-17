@@ -49,3 +49,24 @@ jobs:
                     php_version: ${{ env.PHP_VERSION }}
             -   name: 'Run php-cs-fixer'
                 run: vendor/bin/php-cs-fixer fix --diff --dry-run --config=.php-cs-fixer.dist.php
+
+    phpunit:
+        name: 'PHPUnit'
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v4
+            -   name: 'Setup PHP'
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: ${{ env.PHP_VERSION }}
+                    coverage: none
+            -   uses: actions/cache@v3
+                with:
+                    path: /tmp/composer-cache
+                    key: ${{ runner.os }}-${{ hashFiles('**/composer.json') }}
+            -   uses: php-actions/composer@v6
+                with:
+                    php_version: ${{ env.PHP_VERSION }}
+            -   name: 'Run php unit'
+                run: vendor/bin/phpunit
